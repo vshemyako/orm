@@ -1,12 +1,10 @@
 spring:
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/java_orm?useUnicode=true&characterEncoding=utf8&useSSL=false
-    username: mysql
-    password: admin
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:myDb;DB_CLOSE_DELAY=-1
   jpa:
-    database-platform: org.hibernate.dialect.MySQL57Dialect
-    database: MYSQL
+    database-platform: org.hibernate.dialect.H2Dialect
+    database: H2
     show-sql: true
     hibernate:
       ddl-auto: create
