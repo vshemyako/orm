@@ -13,6 +13,6 @@ import javax.persistence.Id;
 @NoArgsConstructor
 public class Holiday {
     @Id
-    private int id;
+    private long id;
     private String name;
 }
