@@ -1,4 +1,4 @@
-package com.laplas.orm.cache;
+package com.laplas.orm.cache.level.first;
 
 import com.laplas.orm.entity.Holiday;
 import com.laplas.orm.service.HolidayService;
