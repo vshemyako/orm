@@ -1,4 +1,4 @@
-package com.laplas.orm.base;
+package com.laplas.orm.base.session;
 
 import org.springframework.orm.jpa.persistenceunit.MutablePersistenceUnitInfo;
 

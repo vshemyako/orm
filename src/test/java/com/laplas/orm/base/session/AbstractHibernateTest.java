@@ -1,4 +1,4 @@
-package com.laplas.orm.base;
+package com.laplas.orm.base.session;
 
 import com.laplas.orm.base.datasource.InMemoryDatabase;
 import org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl;
@@ -57,7 +57,7 @@ public abstract class AbstractHibernateTest {
         return result;
     }
 
-    private Properties getDatabaseProperties() {
+    protected Properties getDatabaseProperties() {
         return new InMemoryDatabase().getDatabaseProperties();
     }
 
