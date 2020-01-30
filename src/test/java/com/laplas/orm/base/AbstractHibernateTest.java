@@ -1,5 +1,6 @@
 package com.laplas.orm.base;
 
+import com.laplas.orm.base.datasource.InMemoryDatabase;
 import org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl;
 import org.hibernate.jpa.boot.internal.PersistenceUnitInfoDescriptor;
 import org.junit.jupiter.api.AfterEach;
@@ -12,6 +13,7 @@ import javax.persistence.spi.PersistenceUnitInfo;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Properties;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -55,6 +57,10 @@ public abstract class AbstractHibernateTest {
         return result;
     }
 
+    private Properties getDatabaseProperties() {
+        return new InMemoryDatabase().getDatabaseProperties();
+    }
+
     private List<String> getEntitiesClassesNames() {
         return Arrays.stream(getEntitiesClasses())
                      .map(Class::getName)
@@ -75,10 +81,15 @@ public abstract class AbstractHibernateTest {
         HandyPersistenceUnitInfo unitInfo = new HandyPersistenceUnitInfo();
         unitInfo.setPersistenceUnitName(getUnitInfoName());
         unitInfo.addMappingFileNames(getEntitiesClassesNames());
+        unitInfo.setProperties(getDatabaseProperties());
         return unitInfo;
     }
 
     private EntityManager createEntityManager() {
         return this.entityManagerFactory.createEntityManager();
+    }
+
+    protected EntityManager getEntityManager() {
+        return this.entityManager;
     }
 }
